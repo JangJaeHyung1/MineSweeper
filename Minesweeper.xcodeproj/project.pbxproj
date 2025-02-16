@@ -21,6 +21,7 @@
 		E949DF802D61F47C00C4A313 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF7F2D61F47C00C4A313 /* GachaView.swift */; };
 		E949DF852D61F4A600C4A313 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF842D61F4A600C4A313 /* HapticManager.swift */; };
 		E949DF882D61F5F500C4A313 /* DeviceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF872D61F5F500C4A313 /* DeviceUtils.swift */; };
+		E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E949DF8F2D6201D800C4A313 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,13 @@
 		E949DF842D61F4A600C4A313 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		E949DF872D61F5F500C4A313 /* DeviceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtils.swift; sourceTree = "<group>"; };
 		E949DF8A2D61F74300C4A313 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E949DF8E2D6201D800C4A313 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E949DF902D6201DB00C4A313 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E949DF912D6201DE00C4A313 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E949DF922D6201DF00C4A313 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E949DF932D6201DF00C4A313 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E949DF942D6201E000C4A313 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E949DF952D6201E000C4A313 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,7 @@
 				E949DF6F2D5F917D00C4A313 /* Info.plist */,
 				E913AF262D54C4D30061585E /* Preview Content */,
 				E949DF722D5F94CE00C4A313 /* Localizable.xcstrings */,
+				E949DF8F2D6201D800C4A313 /* InfoPlist.strings */,
 			);
 			path = Minesweeper;
 			sourceTree = "<group>";
@@ -228,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */,
+				E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */,
 				E913AF252D54C4D30061585E /* Assets.xcassets in Resources */,
 				E949DF732D5F94CE00C4A313 /* Localizable.xcstrings in Resources */,
 			);
@@ -253,6 +263,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E949DF8F2D6201D800C4A313 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E949DF8E2D6201D800C4A313 /* en */,
+				E949DF902D6201DB00C4A313 /* zh-Hans */,
+				E949DF912D6201DE00C4A313 /* zh-Hant */,
+				E949DF922D6201DF00C4A313 /* ja */,
+				E949DF932D6201DF00C4A313 /* ko */,
+				E949DF942D6201E000C4A313 /* ru */,
+				E949DF952D6201E000C4A313 /* vi */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E913AF292D54C4D30061585E /* Debug */ = {
@@ -383,13 +410,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025021602;
+				CURRENT_PROJECT_VERSION = 2025021601;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "지뢰지뢰";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -416,13 +442,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025021602;
+				CURRENT_PROJECT_VERSION = 2025021601;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "지뢰지뢰";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

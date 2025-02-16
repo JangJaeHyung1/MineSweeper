@@ -64,7 +64,44 @@
 
     },
     "🎉 획득한 아이템: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 Acquired Item: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 獲得したアイテム: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 Полученный предмет: %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 Vật phẩm nhận được: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 获得的物品: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 獲得的物品: %@"
+          }
+        }
+      }
     },
     "🏆 %lld" : {
 
@@ -79,14 +116,87 @@
 
     },
     "🛠️ 뽑기 시작 (100 포인트)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ Start Gacha (100 Points)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ ガチャ開始 (100ポイント)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ Начать гачу (100 очков)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ Bắt đầu gacha (100 điểm)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ 开始抽奖 (100积分)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🛠️ 開始抽獎 (100積分)"
+          }
+        }
+      }
     },
     "Better luck next time!" : {
       "localizations" : {
-        "ko" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "😆 Oops! Game Over! Better luck next time!"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😆 あっ！ゲームオーバー！次回は頑張って！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "😆 앗! 끝났네요! 다음엔 화이팅!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😆 Ой! Игра окончена! Удачи в следующий раз!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😆 Ôi không! Trò chơi kết thúc! Lần sau may mắn hơn nhé!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😆 哎呀！游戏结束了！下次加油！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😆 哎呀！遊戲結束了！下次加油！"
           }
         }
       }
@@ -483,15 +593,48 @@
         }
       }
     },
-    "oK" : {
-
-    },
     "select_difficulty" : {
       "localizations" : {
-        "ko" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Difficulty Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "難易度設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "난이도 조절"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки сложности"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt độ khó"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "难度设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "難度設置"
           }
         }
       }
@@ -552,13 +695,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You've found all the mines!\\nTime taken: %lld seconds"
+                  "value" : "You've found all the mines! Time taken: %lld seconds"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You've found all the mines!\\nTime taken: %lld seconds"
+                  "value" : "You've found all the mines! Time taken: %lld seconds"
                 }
               }
             }
@@ -570,7 +713,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "すべての地雷を見つけました！\\nかかった時間: %lld秒"
+                  "value" : "すべての地雷を見つけました！ かかった時間: %lld秒"
                 }
               }
             }
@@ -582,13 +725,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "needs_review",
-                  "value" : "모든 지뢰를 찾았습니다!\\n걸린 시간: %lld초"
+                  "value" : "모든 지뢰를 찾았습니다! 걸린 시간: %lld초"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "needs_review",
-                  "value" : "모든 지뢰를 찾았습니다!\\n걸린 시간: %lld초"
+                  "value" : "모든 지뢰를 찾았습니다! 걸린 시간: %lld초"
                 }
               }
             }
@@ -600,7 +743,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Вы нашли все мины! \\nЗатраченное время: %lld секунд"
+                  "value" : "Вы нашли все мины!  Затраченное время: %lld секунд"
                 }
               }
             }
@@ -612,13 +755,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Bạn đã tìm thấy tất cả mìn!\\nThời gian: %lld giây"
+                  "value" : "Bạn đã tìm thấy tất cả mìn! Thời gian: %lld giây"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Bạn đã tìm thấy tất cả mìn!\\nThời gian: %lld giây"
+                  "value" : "Bạn đã tìm thấy tất cả mìn! Thời gian: %lld giây"
                 }
               }
             }
@@ -630,7 +773,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "你已找到所有地雷！\\n所用时间: %lld秒"
+                  "value" : "你已找到所有地雷！所用时间: %lld秒"
                 }
               }
             }
@@ -642,7 +785,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "你已找到所有地雷！\\n所用時間: %lld秒"
+                  "value" : "你已找到所有地雷！所用時間: %lld秒"
                 }
               }
             }
@@ -651,7 +794,44 @@
       }
     },
     "보유 아이템:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collected Items:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有アイテム:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Собранные предметы:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vật phẩm đã sở hữu:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已拥有的物品:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已擁有的物品:"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

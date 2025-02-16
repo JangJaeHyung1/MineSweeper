@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Minesweeper
+
+  Created by jh on 2/16/25.
+  
+*/
+"CFBundleDisplayName" = "Mine Mine";
+"CFBundleName" = "Mine Mine";

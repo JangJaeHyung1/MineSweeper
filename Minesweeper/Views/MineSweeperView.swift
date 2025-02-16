@@ -35,10 +35,10 @@ struct MineSweeperView: View {
         let spacing: CGFloat = 2
 
         VStack(spacing: 0) {
-            Spacer().frame(height: 0) // 상단 여백 강제 제거
-                BannerAdView(adUnitID: adUnitID)
-                    .frame(height: 50)
-                    .background(Color(UIColor.systemGray6))
+//            Spacer().frame(height: 0) // 상단 여백 강제 제거
+//                BannerAdView(adUnitID: adUnitID)
+//                    .frame(height: 50)
+//                    .background(Color(UIColor.systemGray6))
             HStack {
                 Text("⏱️\(elapsedTime)")
                     .fontWeight(.bold)
@@ -122,27 +122,34 @@ struct MineSweeperView: View {
             .padding()
             Spacer()
         }
-        .alert(isPresented: $showWinAlert) {
-            Alert(
-                title: Text("congratulations"),
-                message: Text("You've found all the mines! Time taken: \(elapsedTime) seconds"),
-                dismissButton: .default(Text("oK"))
-            )
-        }
         .onAppear {
             startTimer()
         }
         .sheet(isPresented: $showGachaSheet) {
             GachaView(viewModel: viewModel, newItem: $newItem)
         }
-        .alert(isPresented: $showGameOverPopup) {
-            Alert(
-                title: Text(""),
-                message: Text("Better luck next time!"),
-                dismissButton: .default(Text("new_game")) {
-                    resetGame()
-                }
-            )
+        .alert(isPresented: Binding<Bool>(
+            get: { showWinAlert || showGameOverPopup },
+            set: { _ in
+                showWinAlert = false
+                showGameOverPopup = false
+            }
+        )) {
+            if showWinAlert {
+                return Alert(
+                    title: Text("congratulations"),
+                    message: Text("You've found all the mines! Time taken: \(elapsedTime) seconds"),
+                    dismissButton: .default(Text("ok"))
+                )
+            } else {
+                return Alert(
+                    title: Text(""),
+                    message: Text("Better luck next time!"),
+                    dismissButton: .default(Text("new_game")) {
+                        resetGame()
+                    }
+                )
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden()
