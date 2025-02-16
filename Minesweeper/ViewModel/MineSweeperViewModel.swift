@@ -45,6 +45,7 @@ class MineSweeperViewModel: ObservableObject {
     }
     
     private func loadPoints() {
+//        points = 5000
         points = UserDefaults.standard.integer(forKey: pointsKey)
     }
     
@@ -90,6 +91,9 @@ class MineSweeperViewModel: ObservableObject {
                 print("✅ 이 기기는 노치가 있습니다!")
                 gridHeightSize = 14
                 mineCount = 27
+//                TEST VER.
+//                gridHeightSize = 15
+//                mineCount = 29
             } else {
                 gridHeightSize = 12
                 mineCount = 22
@@ -103,9 +107,8 @@ class MineSweeperViewModel: ObservableObject {
     func resetGame() {
         grid = Array(repeating: Array(repeating: Cell(), count: gridWidthSize), count: gridHeightSize)
         flagsPlaced = 0
-        placeMines()
         calculateAdjacentMines()
-        debugPrintGrid() // 디버깅용 답지 출력
+        
     }
 
     private func placeMines() {
@@ -145,39 +148,68 @@ class MineSweeperViewModel: ObservableObject {
         }
     }
 
+    
     func revealCell(row: Int, col: Int) {
+        // 첫 클릭 시 지뢰 배치 및 확장 공개
+        if grid.allSatisfy({ $0.allSatisfy { !$0.isRevealed } }) {
+            placeMines(except: (row, col))
+            calculateAdjacentMines()
+            revealEmptyCells(row: row, col: col)  // 첫 클릭 시 확장 공개
+            debugPrintGrid() // 디버깅용 답지 출력
+        }
+
         if grid[row][col].isRevealed || grid[row][col].isFlagged {
             return
         }
         grid[row][col].isRevealed = true
+
         DispatchQueue.main.async {
             Haptic.impact(style: .soft)
         }
+
         if grid[row][col].adjacentMines == 0 {
             revealEmptyCells(row: row, col: col)
         }
     }
+    
+    private func placeMines(except: (Int, Int)) {
+        var minesPlaced = 0
+        let safeRadius = 2 // 첫 클릭 주변 2칸은 안전
+        while minesPlaced < mineCount {
+            let row = Int.random(in: 0..<gridHeightSize)
+            let col = Int.random(in: 0..<gridWidthSize)
 
+            // 첫 클릭 위치와 주변 2칸을 피하기
+            if abs(row - except.0) <= safeRadius && abs(col - except.1) <= safeRadius {
+                continue
+            }
+
+            if !grid[row][col].isMine {
+                grid[row][col].isMine = true
+                minesPlaced += 1
+            }
+        }
+    }
+    
     private func revealEmptyCells(row: Int, col: Int) {
+        var queue: [(Int, Int)] = [(row, col)]
         let directions = [(-1, -1), (-1, 0), (-1, 1),
                           (0, -1),         (0, 1),
                           (1, -1), (1, 0), (1, 1)]
 
-        for direction in directions {
-            let newRow = row + direction.0
-            let newCol = col + direction.1
+        while !queue.isEmpty {
+            let (currentRow, currentCol) = queue.removeFirst()
+            for direction in directions {
+                let newRow = currentRow + direction.0
+                let newCol = currentCol + direction.1
 
-            if newRow >= 0, newRow < gridHeightSize, newCol >= 0, newCol < gridWidthSize {
-                let cell = grid[newRow][newCol]
-
-                if cell.isRevealed || cell.isMine {
-                    continue
-                }
-
-                grid[newRow][newCol].isRevealed = true
-
-                if cell.adjacentMines == 0 {
-                    revealEmptyCells(row: newRow, col: newCol)
+                if newRow >= 0, newRow < gridHeightSize, newCol >= 0, newCol < gridWidthSize {
+                    if !grid[newRow][newCol].isRevealed && !grid[newRow][newCol].isMine {
+                        grid[newRow][newCol].isRevealed = true
+                        if grid[newRow][newCol].adjacentMines == 0 {
+                            queue.append((newRow, newCol))
+                        }
+                    }
                 }
             }
         }

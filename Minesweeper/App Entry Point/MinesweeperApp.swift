@@ -50,7 +50,7 @@ struct MainView: View {
                             showGameView = true
                         }
                         .padding()
-                        .background(Color.green)
+                        .background(.black)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                         

@@ -19,6 +19,6 @@ struct Cell: Identifiable {
 // MARK: - User Settings (타일 색상 커스터마이징)
 struct UserSettings {
     static var unrevealedColor: Color = Color(UIColor.systemGray5)
-    static var revealedColor: Color = .white
+    static var revealedColor: Color = .clear
     static var mineColor: Color = .red
 }

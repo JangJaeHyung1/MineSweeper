@@ -12,7 +12,6 @@ struct BannerAdView: UIViewRepresentable {
     var adUnitID: String
 
     func makeUIView(context: Context) -> GADBannerView {
-        print("adUnitID:\(adUnitID)")
         let bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.adUnitID = adUnitID
         bannerView.rootViewController = UIApplication.shared.windows.first?.rootViewController

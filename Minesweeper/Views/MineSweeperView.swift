@@ -21,11 +21,19 @@ struct MineSweeperView: View {
     @State private var showGachaSheet = false
     @State private var newItem: String? = nil
     @State private var showGameOverPopup = false
+    @State private var touchStartTime: Date?
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    
     var adUnitID: String {
         Bundle.main.object(forInfoDictionaryKey: "GADAdUnitID") as? String ?? ""
     }
     func colorForMode() -> Color {
         return colorScheme == .dark ? .white : .black
+    }
+    
+    private func toggleAppearance() {
+        isDarkMode.toggle()
+        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
     }
 
     var body: some View {
@@ -35,10 +43,10 @@ struct MineSweeperView: View {
         let spacing: CGFloat = 2
 
         VStack(spacing: 0) {
-//            Spacer().frame(height: 0) // 상단 여백 강제 제거
-//                BannerAdView(adUnitID: adUnitID)
-//                    .frame(height: 50)
-//                    .background(Color(UIColor.systemGray6))
+            Spacer().frame(height: 0) // 상단 여백 강제 제거
+                BannerAdView(adUnitID: adUnitID)
+                    .frame(height: 50)
+                    .background(Color(UIColor.systemGray6))
             HStack {
                 Text("⏱️\(elapsedTime)")
                     .fontWeight(.bold)
@@ -84,6 +92,9 @@ struct MineSweeperView: View {
                             viewModel.setDifficulty(level: "hard")
                             resetGame()
                         },
+                        .default(Text(isDarkMode ? "☀️" : "🌙")) {
+                                    toggleAppearance()
+                                },
                         .cancel()
                     ])
                 }
@@ -99,22 +110,56 @@ struct MineSweeperView: View {
                     ForEach(0..<viewModel.gridWidthSize, id: \ .self) { col in
                         CellView(cell: viewModel.grid[row][col], cellSize: cellSize, flag: viewModel.selectedFlag)
                             .id("\(row)-\(col)")
-                            .onTapGesture {
-                                if !gameOver {
-                                    handleCellTap(row: row, col: col)
-                                }
-                            }
-                            .onLongPressGesture(minimumDuration: 0.05) {
-                                if !gameOver {
-                                    DispatchQueue.main.async {
-                                        Haptic.impact(style: .medium)
+                            .gesture(
+                                DragGesture(minimumDistance: 0)
+                                    .onChanged { _ in
+                                        if !gameOver {
+                                            if touchStartTime == nil {
+                                                touchStartTime = Date()
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                    if let start = touchStartTime, Date().timeIntervalSince(start) >= 0.3 {
+                                                        // 🏳️ 깃발 꽂기
+                                                        Haptic.impact(style: .medium)
+                                                        viewModel.toggleFlag(row: row, col: col)
+                                                        touchStartTime = nil // 중복 방지
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
-                                    viewModel.toggleFlag(row: row, col: col)
-                                    if viewModel.checkForWin() {
-                                        handleWin()
+                                    .onEnded { _ in
+                                        if !gameOver {
+                                            guard let startTime = touchStartTime else { return }
+                                            let duration = Date().timeIntervalSince(startTime)
+                                            touchStartTime = nil
+                                            
+                                            if duration < 0.4 {
+                                                // 🚩 셀 열기
+                                                handleCellTap(row: row, col: col)
+                                            }
+                                            
+                                            if viewModel.checkForWin() {
+                                                handleWin()
+                                            }
+                                        }
                                     }
-                                }
-                            }
+                            )
+//                            .onTapGesture {
+//                                if !gameOver {
+//                                    handleCellTap(row: row, col: col)
+//                                }
+//                            }
+//                            .onLongPressGesture(minimumDuration: 0.1, maximumDistance: 10) {
+//                                if !gameOver {
+//                                    DispatchQueue.main.async {
+//                                        Haptic.impact(style: .medium)
+//                                    }
+//                                    viewModel.toggleFlag(row: row, col: col)
+//                                    if viewModel.checkForWin() {
+//                                        handleWin()
+//                                    }
+//                                }
+//                            }
                     }
                 }
             }
@@ -123,6 +168,7 @@ struct MineSweeperView: View {
             Spacer()
         }
         .onAppear {
+            isDarkMode = colorScheme == .dark
             startTimer()
         }
         .sheet(isPresented: $showGachaSheet) {
@@ -139,7 +185,9 @@ struct MineSweeperView: View {
                 return Alert(
                     title: Text("congratulations"),
                     message: Text("You've found all the mines! Time taken: \(elapsedTime) seconds"),
-                    dismissButton: .default(Text("ok"))
+                    dismissButton: .default(Text("ok")) {
+                        resetGame()
+                    }
                 )
             } else {
                 return Alert(
@@ -186,6 +234,16 @@ struct MineSweeperView: View {
         timerRunning = false
         timer?.invalidate()
         showGameOverPopup = true
+        
+        // 💣 모든 지뢰 공개
+        for row in 0..<viewModel.gridHeightSize {
+            for col in 0..<viewModel.gridWidthSize {
+                if viewModel.grid[row][col].isMine {
+                    viewModel.grid[row][col].isRevealed = true
+                }
+            }
+        }
+        
         for i in 0..<5 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
                 Haptic.impact(style: .heavy)

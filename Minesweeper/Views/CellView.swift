@@ -19,7 +19,7 @@ struct CellView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(cell.isRevealed ? (cell.isMine ? UserSettings.mineColor : bgColorForMode()) : UserSettings.unrevealedColor)
+                .foregroundColor(cell.isRevealed ? (cell.isMine ? UserSettings.mineColor : Color.clear) : UserSettings.unrevealedColor)
                 .frame(width: cellSize, height: cellSize)
                 .cornerRadius(5)
                 .scaleEffect(cell.isRevealed ? 1.1 : 1.0) // 클릭 애니메이션
@@ -44,10 +44,11 @@ struct CellView: View {
     }
     private func colorForMineCount(_ count: Int) -> Color {
         switch count {
-        case 1: return .green
+        case 1: return Color(red: 0.5, green: 0.75, blue: 0.5)
         case 2: return .blue
-        case 3: return .orange
-        case 4...: return .red
+        case 3: return Color(red: 1.0, green: 0.6, blue: 0.4)
+        case 4: return Color(red: 0.85, green: 0.4, blue: 0.4)
+        case 5...: return Color(red: 0.6, green: 0.5, blue: 0.8)
         default: return .white
         }
     }
