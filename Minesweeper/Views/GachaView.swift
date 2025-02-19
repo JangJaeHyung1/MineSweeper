@@ -11,15 +11,15 @@ struct GachaView: View {
     @ObservedObject var viewModel: MineSweeperViewModel
     @Binding var newItem: String?
 
-    var gachaItems = ["🚩","🍎","🍋","🍓","🍉","🥦","🥑", "🧀", "🍔", "🎃", "🍀", "🌱", "💜", "🩵", "💛", "❤️","🤍", "🌊", "🌧️","❄️","🫧", "🌙","⭐️","🌍","🌈","🌕", "🌝", "😈", "👾", "👻", "💀", "💩", "🐶", "🐭", "🐰", "🐹", "🐼","🦁", "🙈", "🐽", "🦄", "🐥", "🐣","🐿️", "🪼", "🕷️", "🍄", "🎅","❣️"]
+    var gachaItems = ["🚩","🍎","🍋","🍓","🍉","🥦","🥑", "🧀", "🍔", "🎃", "🍀", "🌱", "💜", "🩵", "💛", "❤️","🤍", "🌊", "🌧️","❄️","🫧", "🌙","⭐️","🌍","🌈","🌕", "🌝", "😈", "👾", "👻", "💀", "💩", "🐶", "🐭", "🐰", "🐹", "🐼","🦁", "🙈", "🐽", "🦄", "🐥", "🐣","🐿️", "🪼", "🕷️", "🍄", "🎅","❣️","🧚","👑","🐸","🍕","🍟","🍣","🍭","🥨","🚀","🏖️","🏩",
+//                      "똥",
+    ]
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("🎉 획득한 아이템: \(newItem ?? "❓")")
+            Text("\(NSLocalizedString("getItem", comment: ""))" + "\(newItem ?? "❓")")
                 .font(.title2)
                 .padding()
-
-            Text("보유 아이템:")
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 10) {
                     ForEach(gachaItems, id: \.self) { item in
@@ -32,6 +32,7 @@ struct GachaView: View {
                             .onTapGesture {
                                 if viewModel.availableFlags.contains(item) {
                                     viewModel.selectedFlag = item
+                                    viewModel.saveUsedFlag()
                                 }
                             }
                     }
@@ -50,7 +51,7 @@ struct GachaView: View {
                     }
                 }
             }) {
-                Text("🛠️ 뽑기 시작 (100 포인트)")
+                Text("\(NSLocalizedString("gatchaStart", comment: ""))")
                     .font(.headline)
                     .padding()
                     .background(viewModel.points < 100 ? Color.gray : Color.blue)

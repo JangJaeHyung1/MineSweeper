@@ -7,10 +7,46 @@
 
 import SwiftUI
 
+
+enum Difficulty: CaseIterable, Comparable {
+    case easy
+    case normal
+    case hard
+    // ✅ 정렬 기준 (easy → normal → hard 순)
+    static func < (lhs: Difficulty, rhs: Difficulty) -> Bool {
+        let order: [Difficulty] = [.easy, .normal, .hard]
+        return order.firstIndex(of: lhs)! < order.firstIndex(of: rhs)!
+    }
+    // 난이도별 포인트 반환
+    var rewardPoints: Int {
+        switch self {
+        case .easy: return 10
+        case .normal: return 20
+        case .hard: return 40
+        }
+    }
+
+    // 난이도별 지뢰 수 및 높이 설정
+    var gridSettings: (height: Int, mines: Int) {
+        switch self {
+        case .easy: return (height: 8, mines: 10)
+        case .normal:
+            return (height: 11, mines: 16)
+        case .hard:
+            if DeviceUtils.hasNotch {
+                return (height: 14, mines: 25)
+//                return (height: 15, mines: 26)
+            } else {
+                return (height: 12, mines: 21)
+            }
+        }
+    }
+}
+
 // MARK: - Game View
 struct MineSweeperView: View {
     @StateObject private var viewModel = MineSweeperViewModel()
-    @State private var selectedDifficulty: String = "normal"
+    @State private var selectedDifficulty: Difficulty = .normal
     @State private var showWinAlert: Bool = false
     @State private var elapsedTime: Int = 0
     @State private var timerRunning: Bool = false
@@ -19,10 +55,13 @@ struct MineSweeperView: View {
     @State private var showDifficultySheet: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @State private var showGachaSheet = false
+    @State private var showRankingSheet = false
+    
     @State private var newItem: String? = nil
     @State private var showGameOverPopup = false
     @State private var touchStartTime: Date?
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    @State private var hasWon = false
     
     var adUnitID: String {
         Bundle.main.object(forInfoDictionaryKey: "GADAdUnitID") as? String ?? ""
@@ -48,19 +87,60 @@ struct MineSweeperView: View {
                     .frame(height: 50)
                     .background(Color(UIColor.systemGray6))
             HStack {
-                Text("⏱️\(elapsedTime)")
-                    .fontWeight(.bold)
-                    .frame(width: 75, alignment: .leading) // 고정 너비 및 오른쪽 정렬
-                    .monospacedDigit() // 숫자 폭 고정
+                Button(action: {
+                    showRankingSheet = true
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(UIColor.systemGray6).opacity(0.6))
+                            .frame(width: 85, height: 40)
+                        Text("⏱️\(elapsedTime)")
+                            .fontWeight(.bold)
+                            .tint(colorForMode())
+                            .frame(width: 80, alignment: .leading) // 고정 너비 및 오른쪽 정렬
+                            .monospacedDigit() // 숫자 폭 고정
+                        }
+                }
+                .actionSheet(isPresented: $showDifficultySheet) {
+                    ActionSheet(title: Text("\(NSLocalizedString("select_difficulty", comment: ""))"), buttons: [
+                        .default(Text("\(NSLocalizedString("easy", comment: ""))")) {
+                            selectedDifficulty = .easy
+                            viewModel.setDifficulty(.easy)
+                            resetGame()
+                        },
+                        .default(Text("\(NSLocalizedString("normal", comment: ""))")) {
+                            selectedDifficulty = .normal
+                            viewModel.setDifficulty(.normal)
+                            resetGame()
+                        },
+                        .default(Text("\(NSLocalizedString("hard", comment: ""))")) {
+                            selectedDifficulty = .hard
+                            viewModel.setDifficulty(.hard)
+                            resetGame()
+                        },
+                        .default(Text(isDarkMode ? "☀️" : "🌙")) {
+                            toggleAppearance()
+                        },
+                        .cancel()
+                    ])
+                }
+                
                 Text("💣 \(max(viewModel.mineCount - viewModel.flagsPlaced,0))")
                     .fontWeight(.bold)
+                    .onLongPressGesture(minimumDuration: 2.0) {
+                        if UserDefaults.standard.bool(forKey: viewModel.hiddenBonusPoint) == false {
+                            viewModel.isHiddenBonusAlert = true
+                        }
+                        print("✅ 3초 터치 완료! hiddenBonusPoint 활성화")
+                    }
+                
                 Spacer()
-                                Text("🏆 \(viewModel.points)")
-                                    .font(.headline)
-                                    .foregroundColor(.purple)
-                                    .onTapGesture {
-                                        showGachaSheet = true
-                                    }
+                Text("🏆 \(viewModel.points)")
+                    .font(.headline)
+                    .foregroundColor(.purple)
+                    .onTapGesture {
+                        showGachaSheet = true
+                    }
                 Spacer()
                 Button(action: {
                     showDifficultySheet = true
@@ -73,28 +153,27 @@ struct MineSweeperView: View {
                             Text("🕹️")
                                 .font(.title)
                         }
-                                        
                 }
                 .actionSheet(isPresented: $showDifficultySheet) {
-                    ActionSheet(title: Text("select_difficulty"), buttons: [
-                        .default(Text("easy")) {
-                            selectedDifficulty = "easy"
-                            viewModel.setDifficulty(level: "easy")
+                    ActionSheet(title: Text("\(NSLocalizedString("select_difficulty", comment: ""))"), buttons: [
+                        .default(Text("\(NSLocalizedString("easy", comment: ""))")) {
+                            selectedDifficulty = .easy
+                            viewModel.setDifficulty(.easy)
                             resetGame()
                         },
-                        .default(Text("normal")) {
-                            selectedDifficulty = "normal"
-                            viewModel.setDifficulty(level: "normal")
+                        .default(Text("\(NSLocalizedString("normal", comment: ""))")) {
+                            selectedDifficulty = .normal
+                            viewModel.setDifficulty(.normal)
                             resetGame()
                         },
-                        .default(Text("hard")) {
-                            selectedDifficulty = "hard"
-                            viewModel.setDifficulty(level: "hard")
+                        .default(Text("\(NSLocalizedString("hard", comment: ""))")) {
+                            selectedDifficulty = .hard
+                            viewModel.setDifficulty(.hard)
                             resetGame()
                         },
                         .default(Text(isDarkMode ? "☀️" : "🌙")) {
-                                    toggleAppearance()
-                                },
+                            toggleAppearance()
+                        },
                         .cancel()
                     ])
                 }
@@ -112,7 +191,7 @@ struct MineSweeperView: View {
                             .id("\(row)-\(col)")
                             .gesture(
                                 DragGesture(minimumDistance: 0)
-                                    .onChanged { _ in
+                                    .onChanged { value in
                                         if !gameOver {
                                             if touchStartTime == nil {
                                                 touchStartTime = Date()
@@ -121,45 +200,33 @@ struct MineSweeperView: View {
                                                         // 🏳️ 깃발 꽂기
                                                         Haptic.impact(style: .medium)
                                                         viewModel.toggleFlag(row: row, col: col)
-                                                        touchStartTime = nil // 중복 방지
+                                                        if viewModel.checkForWin() {
+                                                            handleWin()
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                    .onEnded { _ in
+                                    .onEnded { value in
                                         if !gameOver {
                                             guard let startTime = touchStartTime else { return }
                                             let duration = Date().timeIntervalSince(startTime)
                                             touchStartTime = nil
-                                            
-                                            if duration < 0.4 {
-                                                // 🚩 셀 열기
-                                                handleCellTap(row: row, col: col)
+                                            let dragDistance = abs(value.translation.width) + abs(value.translation.height)
+                                            if dragDistance < 10, touchStartTime == nil {
+                                                if duration < 0.3 {
+                                                    // 🚩 셀 열기
+                                                    handleCellTap(row: row, col: col)
+                                                }
+                                                if viewModel.checkForWin() {
+                                                    handleWin()
+                                                }
                                             }
                                             
-                                            if viewModel.checkForWin() {
-                                                handleWin()
-                                            }
                                         }
                                     }
                             )
-//                            .onTapGesture {
-//                                if !gameOver {
-//                                    handleCellTap(row: row, col: col)
-//                                }
-//                            }
-//                            .onLongPressGesture(minimumDuration: 0.1, maximumDistance: 10) {
-//                                if !gameOver {
-//                                    DispatchQueue.main.async {
-//                                        Haptic.impact(style: .medium)
-//                                    }
-//                                    viewModel.toggleFlag(row: row, col: col)
-//                                    if viewModel.checkForWin() {
-//                                        handleWin()
-//                                    }
-//                                }
-//                            }
                     }
                 }
             }
@@ -170,30 +237,44 @@ struct MineSweeperView: View {
         .onAppear {
             isDarkMode = colorScheme == .dark
             startTimer()
+            GameDataManager.shared.loadGameData()
         }
         .sheet(isPresented: $showGachaSheet) {
             GachaView(viewModel: viewModel, newItem: $newItem)
         }
+        .sheet(isPresented: $showRankingSheet) {
+            LeaderBoardView()
+        }
         .alert(isPresented: Binding<Bool>(
-            get: { showWinAlert || showGameOverPopup },
+            get: { showWinAlert || showGameOverPopup || viewModel.isHiddenBonusAlert },
             set: { _ in
                 showWinAlert = false
                 showGameOverPopup = false
+                viewModel.isHiddenBonusAlert = false
             }
         )) {
             if showWinAlert {
                 return Alert(
-                    title: Text("congratulations"),
-                    message: Text("You've found all the mines! Time taken: \(elapsedTime) seconds"),
-                    dismissButton: .default(Text("ok")) {
+                    title: Text("\(NSLocalizedString("congratulations", comment: ""))"),
+                    message: Text(String(format: NSLocalizedString("clearTime", comment: ""), elapsedTime)),
+                    dismissButton: .default(Text("\(NSLocalizedString("ok", comment: ""))")) {
                         resetGame()
+                    }
+                )
+            } else if viewModel.isHiddenBonusAlert {
+                return Alert(
+                    title: Text("\(NSLocalizedString("congratulations", comment: ""))"),
+                    message: Text("\(NSLocalizedString("hiddenPoints", comment: ""))"),
+                    dismissButton: .default(Text("\(NSLocalizedString("ok", comment: ""))")) {
+                        viewModel.hiddenPoint()
+                        viewModel.isHiddenBonusAlert = false
                     }
                 )
             } else {
                 return Alert(
                     title: Text(""),
-                    message: Text("Better luck next time!"),
-                    dismissButton: .default(Text("new_game")) {
+                    message: Text("\(NSLocalizedString("BetterlucknextTime", comment: ""))"),
+                    dismissButton: .default(Text("\(NSLocalizedString("new_game", comment: ""))")) {
                         resetGame()
                     }
                 )
@@ -213,16 +294,20 @@ struct MineSweeperView: View {
     }
 
     func handleWin() {
-        if selectedDifficulty == "easy" {
-            viewModel.addPoints(15)
-            print("easy win")
-        } else if selectedDifficulty == "normal" {
-            viewModel.addPoints(20)
-            print("normal win")
+        guard !hasWon else { return } // 중복 호출 방지
+        hasWon = true
+        
+        let points = viewModel.currentDifficulty.rewardPoints
+        if viewModel.currentDifficulty == .easy {
+            GameDataManager.shared.saveData(value: elapsedTime, key: Keys.easyBestClearTime)
+        } else if viewModel.currentDifficulty == .normal {
+            GameDataManager.shared.saveData(value: elapsedTime, key: Keys.normalBestClearTime)
         } else {
-            viewModel.addPoints(25)
-            print("hard win")
+            GameDataManager.shared.saveData(value: elapsedTime, key: Keys.hardBestClearTime)
         }
+        
+        
+        viewModel.addPoints(points)
         gameOver = true
         showWinAlert = true
         timerRunning = false
@@ -252,6 +337,7 @@ struct MineSweeperView: View {
     }
 
     func resetGame() {
+        hasWon = false
         gameOver = false
         showWinAlert = false
         elapsedTime = 0

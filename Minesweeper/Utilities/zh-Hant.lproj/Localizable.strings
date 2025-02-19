@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  Minesweeper
+
+  Created by jh on 2/20/25.
+  
+*/
+"totalMinesFound" = "找到的地雷總數";
+
+"easyClearCount" = "簡單模式清除次數";
+"normalClearCount" = "普通模式清除次數";
+"hardClearCount" = "困難模式清除次數";
+
+"easyBestClearTime" = "簡單模式最佳紀錄";
+"normalBestClearTime" = "普通模式最佳紀錄";
+"hardBestClearTime" = "困難模式最佳紀錄";
+
+"totalDraws" = "總抽獎次數";
+"totalPoints" = "累積積分";
+"failDraws" = "失敗抽獎次數";
+
+"hiddenPoints" = "❤️ 隱藏的1000分!!";
+"select_difficulty" = "選擇難度";
+"BetterlucknextTime" = "😆 哎呀！下次加油！";
+"clearTimeFast" = "⏱️ 清除時間";
+"drawCount" = "🎰 抽獎記錄";
+"foundMine" = "💣 發現的地雷";
+"gameStatic" = "遊戲統計";
+"viewRank" = "查看排名";
+"gameCenterConnected" = "Game Center已連接";
+"clearTime" = "所有地雷已找到！耗時: %d秒";
+"getItem" = "🎉 獲得的物品:";
+"clearCount" = "🏆 清除次數";
+"gatchaStart" = "🛠️ 開始抽獎 (100分)";
+"congratulations" = "🥳 恭喜！";
+"easy" = "簡單";
+"normal" = "普通";
+"hard" = "困難";
+"minesweeper" = "地雷地雷";
+"new_game" = "新遊戲";
+"ok" = "確認";
+"start_game" = "開始遊戲";

@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  Minesweeper
+
+  Created by jh on 2/20/25.
+  
+*/
+
+"totalMinesFound" = "Total Mines Found";
+
+"easyClearCount" = "Easy Mode Clear Count";
+"normalClearCount" = "Normal Mode Clear Count";
+"hardClearCount" = "Hard Mode Clear Count";
+
+"easyBestClearTime" = "Easy Mode Best Record";
+"normalBestClearTime" = "Normal Mode Best Record";
+"hardBestClearTime" = "Hard Mode Best Record";
+
+"totalDraws" = "Total Draws";
+"totalPoints" = "Total Points";
+"failDraws" = "Fail Draws";
+
+"hiddenPoints" = "❤️ Hidden 1000 points!";
+"select_difficulty" = "Select Difficulty";
+"BetterlucknextTime" = "😆 Oh no! Better luck next time!";
+"clearTimeFast" = "⏱️ Clear Time";
+"drawCount" = "🎰 Draw History";
+"foundMine" = "💣 Mines Found";
+"gameStatic" = "Game Statistics";
+"viewRank" = "View Ranking";
+"gameCenterConnected" = "Game Center is already connected";
+"clearTime" = "All mines found! Time taken: %d seconds";
+"getItem" = "🎉 Item acquired:";
+"clearCount" = "🏆 Clear Count";
+"gatchaStart" = "🛠️ Start Gacha (100 points)";
+"congratulations" = "🥳 Congratulations!";
+"easy" = "Easy";
+"normal" = "Normal";
+"hard" = "Hard";
+"minesweeper" = "Mine Mine";
+"new_game" = "New Game";
+"ok" = "OK";
+"start_game" = "Start Game";

@@ -11,17 +11,20 @@ import SwiftUI
 class MineSweeperViewModel: ObservableObject {
     @Published var grid: [[Cell]] = []
     @Published var gridWidthSize: Int = 8
-    @Published var gridHeightSize: Int = 10
-    @Published var mineCount: Int = 15
+    @Published var gridHeightSize: Int = Difficulty.normal.gridSettings.height
+    @Published var mineCount: Int = Difficulty.normal.gridSettings.mines
     @Published var flagsPlaced: Int = 0
     @Published var points: Int = 0
     @Published var selectedFlag: String = "🚩" // 기본 플래그
     @Published var availableFlags: [String] = ["🚩"]
-    
+    @Published var currentDifficulty: Difficulty = .normal
+    @Published var isHiddenBonusAlert = false
     private let pointsKey = "userPoints"
     private let flagsKey = "userFlags"
-    
+    private let usedFlagKey = "usedFlag"
+    let hiddenBonusPoint = "hiddenBonusPoint"
     init() {
+        loadUsedFlag()
         loadPoints()
         loadFlags()
         resetGame()
@@ -30,11 +33,31 @@ class MineSweeperViewModel: ObservableObject {
     func addPoints(_ amount: Int) {
         points += amount
         savePoints()
+        GameDataManager.shared.saveData(value: amount, key: Keys.totalPoints)
+        GameDataManager.shared.saveData(value: currentDifficulty.gridSettings.mines, key: Keys.totalMinesFound)
+        if currentDifficulty == .easy {
+            GameDataManager.shared.saveData(value: 1, key: Keys.easyClearCount)
+        } else if currentDifficulty == .normal {
+            GameDataManager.shared.saveData(value: 1, key: Keys.normalClearCount)
+        } else {
+            GameDataManager.shared.saveData(value: 1, key: Keys.hardClearCount)
+        }
+    }
+    
+    func hiddenPoint() {
+        if UserDefaults.standard.bool(forKey: hiddenBonusPoint) == false {
+            UserDefaults.standard.setValue(true, forKey: hiddenBonusPoint)
+            points += 1000
+            savePoints()
+            isHiddenBonusAlert = true
+        }
+        
     }
     
     func deductPoints(_ amount: Int) -> Bool {
         if points >= amount {
             points -= amount
+            GameDataManager.shared.saveData(value: 1, key: Keys.gachaCount)
             savePoints()
             return true
         }
@@ -66,11 +89,26 @@ class MineSweeperViewModel: ObservableObject {
         }
     }
     
+    func saveUsedFlag() {
+        UserDefaults.standard.set(selectedFlag, forKey: usedFlagKey)
+    }
+    
+    private func loadUsedFlag() {
+        if let flags = UserDefaults.standard.string(forKey: usedFlagKey) {
+            selectedFlag = flags
+        }
+    }
+    
     func performGacha() -> String? {
-        let gachaItems = ["🍎","🍋","🍓","🍉","🥦","🥑", "🧀", "🍔", "🎃", "🍀", "🌱", "💜", "🩵", "💛", "❤️","🤍", "🌊", "🌧️","❄️","🫧", "🌙","⭐️","🌍","🌈","🌕", "🌝", "😈", "👾", "👻", "💀", "💩", "🐶", "🐭", "🐰", "🐹", "🐼","🦁", "🙈", "🐽", "🦄", "🐥", "🐣","🐿️", "🪼", "🕷️", "🍄", "🎅","❣️", "❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌"]
+        let gachaItems = ["🍎","🍋","🍓","🍉","🥦","🥑", "🧀", "🍔", "🎃", "🍀", "🌱", "💜", "🩵", "💛", "❤️","🤍", "🌊", "🌧️","❄️","🫧", "🌙","⭐️","🌍","🌈","🌕", "🌝", "😈", "👾", "👻", "💀", "💩", "🐶", "🐭", "🐰", "🐹", "🐼","🦁", "🙈", "🐽", "🦄", "🐥", "🐣","🐿️", "🪼", "🕷️", "🍄", "🎅","❣️","🧚","👑","🐸","🍕","🍟","🍣","🍭","🥨","🚀","🏖️","🏩",
+//                          "똥",
+                          "❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌","❌"]
         let cost = 100
         if deductPoints(cost) {
             let newItem = gachaItems.randomElement() ?? "🚩"
+            if newItem == "❌" {
+                GameDataManager.shared.saveData(value: 1, key: Keys.failGachaCount)
+            }
             addFlag(newItem)
             return newItem
         }
@@ -78,29 +116,11 @@ class MineSweeperViewModel: ObservableObject {
     }
     
 
-    func setDifficulty(level: String) {
-        switch level {
-        case "easy":
-            gridHeightSize = 8
-            mineCount = 8
-        case "normal":
-            gridHeightSize = 10
-            mineCount = 15
-        default:
-            if DeviceUtils.hasNotch {
-                print("✅ 이 기기는 노치가 있습니다!")
-                gridHeightSize = 14
-                mineCount = 27
-//                TEST VER.
-//                gridHeightSize = 15
-//                mineCount = 29
-            } else {
-                gridHeightSize = 12
-                mineCount = 22
-                print("❌ 이 기기는 노치가 없습니다!")
-            }
-            
-        }
+    func setDifficulty(_ difficulty: Difficulty) {
+        currentDifficulty = difficulty
+        let settings = difficulty.gridSettings
+        gridHeightSize = settings.height
+        mineCount = settings.mines
         resetGame()
     }
 
@@ -199,13 +219,28 @@ class MineSweeperViewModel: ObservableObject {
 
         while !queue.isEmpty {
             let (currentRow, currentCol) = queue.removeFirst()
+            
+            // 🏳️ 깃발 제거 로직 추가
+            if grid[currentRow][currentCol].isFlagged {
+                grid[currentRow][currentCol].isFlagged = false
+                flagsPlaced -= 1 // 깃발 수 감소
+            }
+            
             for direction in directions {
                 let newRow = currentRow + direction.0
                 let newCol = currentCol + direction.1
 
                 if newRow >= 0, newRow < gridHeightSize, newCol >= 0, newCol < gridWidthSize {
+                    
                     if !grid[newRow][newCol].isRevealed && !grid[newRow][newCol].isMine {
                         grid[newRow][newCol].isRevealed = true
+                        
+                        // 깃발 제거 로직
+                        if grid[newRow][newCol].isFlagged {
+                            grid[newRow][newCol].isFlagged = false
+                            flagsPlaced -= 1
+                        }
+                        
                         if grid[newRow][newCol].adjacentMines == 0 {
                             queue.append((newRow, newCol))
                         }

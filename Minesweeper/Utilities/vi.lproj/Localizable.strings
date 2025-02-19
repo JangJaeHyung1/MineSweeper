@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  Minesweeper
+
+  Created by jh on 2/20/25.
+  
+*/
+"totalMinesFound" = "Tổng số mìn đã tìm thấy";
+
+"easyClearCount" = "Số lần hoàn thành chế độ dễ";
+"normalClearCount" = "Số lần hoàn thành chế độ bình thường";
+"hardClearCount" = "Số lần hoàn thành chế độ khó";
+
+"easyBestClearTime" = "Kỷ lục tốt nhất chế độ dễ";
+"normalBestClearTime" = "Kỷ lục tốt nhất chế độ thường";
+"hardBestClearTime" = "Kỷ lục tốt nhất chế độ khó";
+
+"totalDraws" = "Tổng số lần rút thăm";
+"totalPoints" = "Tổng điểm";
+"failDraws" = "Số lần thất bại";
+
+"hiddenPoints" = "❤️ 1000 điểm ẩn!!";
+"select_difficulty" = "Chọn độ khó";
+"BetterlucknextTime" = "😆 Ôi không! Chúc may mắn lần sau!";
+"clearTimeFast" = "⏱️ Thời gian hoàn thành";
+"drawCount" = "🎰 Lịch sử rút thăm";
+"foundMine" = "💣 Số mìn đã tìm thấy";
+"gameStatic" = "Thống kê trò chơi";
+"viewRank" = "Xem xếp hạng";
+"gameCenterConnected" = "Game Center đã được kết nối";
+"clearTime" = "Đã tìm thấy tất cả mìn! Thời gian hoàn thành: %d giây";
+"getItem" = "🎉 Vật phẩm nhận được:";
+"clearCount" = "🏆 Số lần hoàn thành";
+"gatchaStart" = "🛠️ Bắt đầu Gacha (100 điểm)";
+"congratulations" = "🥳 Chúc mừng!";
+"easy" = "Dễ";
+"normal" = "Trung bình";
+"hard" = "Khó";
+"minesweeper" = "Mìn Mìn";
+"new_game" = "Trò chơi mới";
+"ok" = "OK";
+"start_game" = "Bắt đầu trò chơi";

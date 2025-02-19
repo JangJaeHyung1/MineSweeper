@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  Minesweeper
+
+  Created by jh on 2/20/25.
+  
+*/
+
+/* 기본 한국어 */
+"totalMinesFound" = "총 찾은 지뢰 수";
+
+"easyClearCount" = "쉬운 모드 클리어 횟수";
+"normalClearCount" = "보통 모드 클리어 횟수";
+"hardClearCount" = "어려운 모드 클리어 횟수";
+
+"easyBestClearTime" = "쉬운 모드 최고 기록";
+"normalBestClearTime" = "보통 모드 최고 기록";
+"hardBestClearTime" = "어려운 모드 최고 기록";
+
+"totalDraws" = "총 뽑기 횟수";
+"totalPoints" = "누적 포인트";
+"failDraws" = "꽝 뽑은 횟수";
+
+"hiddenPoints" = "❤️ 숨겨진 1000 포인트입니다!!";
+"select_difficulty" = "난이도 조절";
+"BetterlucknextTime" = "😆 앗! 끝났네요! 다음엔 화이팅!";
+"clearTimeFast" = "⏱️ 클리어 시간";
+"drawCount" = "🎰 뽑기 기록";
+"foundMine" = "💣 찾은 지뢰";
+"gameStatic" = "게임 통계";
+"viewRank" = "랭킹 보기";
+"gameCenterConnected" = "Game Center가 이미 연동되어있습니다";
+"clearTime" = "모든 지뢰를 찾았습니다! 걸린 시간: %d초";
+"getItem" = "🎉 획득한 아이템:";
+"clearCount" = "🏆 클리어 횟수";
+"gatchaStart" = "🛠️ 뽑기 시작 (100 포인트)";
+"congratulations" = "🥳 축하합니다!";
+"easy" = "쉬움";
+"normal" = "보통";
+"hard" = "어려움";
+"minesweeper" = "지뢰지뢰";
+"new_game" = "새 게임";
+"ok" = "확인";
+"start_game" = "게임 시작";

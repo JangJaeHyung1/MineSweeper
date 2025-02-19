@@ -6,12 +6,22 @@ import GoogleMobileAds
 // MARK: - App Entry Point
 @main
 struct MineSweeperApp: App {
+    @State private var isShowingSplash = true
     init() {
         requestTrackingPermission()
     }
     var body: some Scene {
         WindowGroup {
-            MainView()
+            if isShowingSplash {
+                SplashView()  // ✅ 스플래시 화면
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 3초 후 메인 화면 전환
+                            isShowingSplash = false
+                        }
+                    }
+            } else {
+                MainView()    // ✅ 메인 화면
+            }
         }
     }
 }
@@ -40,13 +50,19 @@ struct MainView: View {
                     .ignoresSafeArea()
                     
                     VStack(spacing: 20) {
-                        Text("minesweeper")
+                        Image("Minesweeper_logo")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                        
+                        Text("\(NSLocalizedString("minesweeper", comment: ""))")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding()
                         
-                        Button("start_game") {
+                        Button("\(NSLocalizedString("start_game", comment: ""))") {
                             showGameView = true
                         }
                         .padding()

@@ -22,7 +22,7 @@ struct CellView: View {
                 .foregroundColor(cell.isRevealed ? (cell.isMine ? UserSettings.mineColor : Color.clear) : UserSettings.unrevealedColor)
                 .frame(width: cellSize, height: cellSize)
                 .cornerRadius(5)
-                .scaleEffect(cell.isRevealed ? 1.1 : 1.0) // 클릭 애니메이션
+                .scaleEffect(cell.isRevealed ? 1.0 : 1.0) // 클릭 애니메이션
                 .animation(.easeInOut, value: cell.isRevealed)
 
             if cell.isFlagged {
