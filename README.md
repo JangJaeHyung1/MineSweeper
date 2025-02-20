@@ -34,7 +34,7 @@ Minesweeper/
 ├─ View            // SwiftUI 기반 화면 구성
 ├─ ViewModel       // UI와 Model을 연결하는 비즈니스 로직
 ├─ Utilities       // 햅틱 관련, 광고 배너, 다국어 지원(Localizable.strings)
-└─ App Entry Point.swift       // 앱 진입점
+└─ App Entry Point // 앱 진입점
 
 ```
 
