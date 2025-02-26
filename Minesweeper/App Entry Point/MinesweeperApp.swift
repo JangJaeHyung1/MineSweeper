@@ -8,28 +8,44 @@ import GoogleMobileAds
 struct MineSweeperApp: App {
     @State private var isShowingSplash = true
     init() {
+        requestTrackingAuthorization()
         requestTrackingPermission()
+        
     }
     var body: some Scene {
         WindowGroup {
-            if isShowingSplash {
-                SplashView()  // ✅ 스플래시 화면
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 3초 후 메인 화면 전환
-                            isShowingSplash = false
-                        }
-                    }
-            } else {
-                MainView()    // ✅ 메인 화면
-            }
+            MainView()    // ✅ 메인 화면
         }
     }
 }
 
+func requestTrackingAuthorization() {
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                print("Tracking authorized")
+            case .denied:
+                print("Tracking denied")
+            case .notDetermined:
+                print("Tracking not determined")
+            case .restricted:
+                print("Tracking restricted")
+            @unknown default:
+                print("Unknown status")
+            }
+        }
+    }
+
 func requestTrackingPermission() {
     ATTrackingManager.requestTrackingAuthorization { status in
         DispatchQueue.main.async {
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            GADMobileAds.sharedInstance().start { status in
+                let adapterStatuses = status.adapterStatusesByClassName
+                for (adapter, status) in adapterStatuses {
+                    print("Adapter Name: \(adapter), Description: \(status.description), State: \(status.state.rawValue)")
+                }
+            }
+//            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [GADSimulatorID]
         }
     }
 }

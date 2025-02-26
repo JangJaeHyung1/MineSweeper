@@ -29,15 +29,15 @@ enum Difficulty: CaseIterable, Comparable {
     // 난이도별 지뢰 수 및 높이 설정
     var gridSettings: (height: Int, mines: Int) {
         switch self {
-        case .easy: return (height: 8, mines: 10)
+        case .easy: return (height: 8, mines: 8)
         case .normal:
-            return (height: 11, mines: 16)
+            return (height: 11, mines: 12)
         case .hard:
             if DeviceUtils.hasNotch {
-                return (height: 14, mines: 25)
-//                return (height: 15, mines: 26)
+//                return (height: 14, mines: 23)
+                return (height: 15, mines: 23)
             } else {
-                return (height: 12, mines: 21)
+                return (height: 12, mines: 19)
             }
         }
     }
@@ -83,9 +83,9 @@ struct MineSweeperView: View {
 
         VStack(spacing: 0) {
             Spacer().frame(height: 0) // 상단 여백 강제 제거
-                BannerAdView(adUnitID: adUnitID)
-                    .frame(height: 50)
-                    .background(Color(UIColor.systemGray6))
+//                BannerAdView(adUnitID: adUnitID)
+//                    .frame(height: 50)
+//                    .background(Color(UIColor.systemGray6))
             HStack {
                 Button(action: {
                     showRankingSheet = true

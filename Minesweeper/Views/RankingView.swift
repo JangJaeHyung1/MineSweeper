@@ -80,7 +80,7 @@ struct LeaderBoardView: View {
             .navigationTitle("\(NSLocalizedString("gameStatic", comment: ""))")
         }
         .onAppear {
-            viewModel.authenticateGameCenter()
+//            viewModel.authenticateGameCenter()
         }.alert(isPresented: $showGameCenterAlert) {
             Alert(title: Text("\(NSLocalizedString("gameCenterConnected", comment: ""))"), message: Text(""), dismissButton: .default(Text("\(NSLocalizedString("ok", comment: ""))")))
         }

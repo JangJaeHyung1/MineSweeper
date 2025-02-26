@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E900CE7A2D6F56500044A616 /* UnityAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE792D6F56500044A616 /* UnityAds.xcframework */; };
+		E900CE7B2D6F56500044A616 /* UnityAds.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE792D6F56500044A616 /* UnityAds.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E900CE7E2D6F565B0044A616 /* UnityAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */; };
+		E900CE7F2D6F565B0044A616 /* UnityAdapter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E913AF212D54C4CF0061585E /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913AF202D54C4CF0061585E /* MinesweeperApp.swift */; };
 		E913AF252D54C4D30061585E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF242D54C4D30061585E /* Assets.xcassets */; };
 		E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF272D54C4D30061585E /* Preview Assets.xcassets */; };
+		E926710A2D65EEB400A9E97B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92671092D65EEB400A9E97B /* GameManager.swift */; };
 		E949DF6B2D5F906F00C4A313 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E949DF6A2D5F906F00C4A313 /* StoreKit.framework */; };
 		E949DF6E2D5F908F00C4A313 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E949DF6D2D5F908F00C4A313 /* GoogleMobileAds */; };
 		E949DF712D5F92BF00C4A313 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF702D5F92BF00C4A313 /* BannerAdView.swift */; };
-		E949DF732D5F94CE00C4A313 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E949DF722D5F94CE00C4A313 /* Localizable.xcstrings */; };
 		E949DF752D61F40700C4A313 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF742D61F40700C4A313 /* CellModel.swift */; };
 		E949DF792D61F44500C4A313 /* MineSweeperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF782D61F44500C4A313 /* MineSweeperViewModel.swift */; };
 		E949DF7C2D61F46B00C4A313 /* MineSweeperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF7B2D61F46B00C4A313 /* MineSweeperView.swift */; };
@@ -22,17 +26,38 @@
 		E949DF852D61F4A600C4A313 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF842D61F4A600C4A313 /* HapticManager.swift */; };
 		E949DF882D61F5F500C4A313 /* DeviceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF872D61F5F500C4A313 /* DeviceUtils.swift */; };
 		E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E949DF8F2D6201D800C4A313 /* InfoPlist.strings */; };
+		E963363A2D65725D0006377F /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96336392D65725D0006377F /* RankingView.swift */; };
+		E963363D2D65A7A30006377F /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963363C2D65A7A30006377F /* LeaderboardViewModel.swift */; };
+		E9E216DB2D6630D300E221C4 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E216DA2D6630D300E221C4 /* SplashView.swift */; };
+		E9E216DE2D6637C900E221C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9E216E02D6637C900E221C4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E900CE7C2D6F56500044A616 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E900CE7B2D6F56500044A616 /* UnityAds.xcframework in Embed Frameworks */,
+				E900CE7F2D6F565B0044A616 /* UnityAdapter.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E900CE792D6F56500044A616 /* UnityAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAds.xcframework; sourceTree = "<group>"; };
+		E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAdapter.xcframework; sourceTree = "<group>"; };
 		E913AF1D2D54C4CF0061585E /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E913AF202D54C4CF0061585E /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		E913AF242D54C4D30061585E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E913AF272D54C4D30061585E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E92671092D65EEB400A9E97B /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		E949DF6A2D5F906F00C4A313 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E949DF6F2D5F917D00C4A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E949DF702D5F92BF00C4A313 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
-		E949DF722D5F94CE00C4A313 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E949DF742D61F40700C4A313 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		E949DF782D61F44500C4A313 /* MineSweeperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineSweeperViewModel.swift; sourceTree = "<group>"; };
 		E949DF7B2D61F46B00C4A313 /* MineSweeperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineSweeperView.swift; sourceTree = "<group>"; };
@@ -48,6 +73,17 @@
 		E949DF932D6201DF00C4A313 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E949DF942D6201E000C4A313 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E949DF952D6201E000C4A313 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E96336392D65725D0006377F /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		E963363B2D658BCE0006377F /* Minesweeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Minesweeper.entitlements; sourceTree = "<group>"; };
+		E963363C2D65A7A30006377F /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		E9E216DA2D6630D300E221C4 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		E9E216DF2D6637C900E221C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9E216E12D6637CA00E221C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E9E216E22D6637CA00E221C4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E9E216E32D6637CB00E221C4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9E216E42D6637CB00E221C4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9E216E52D6637CB00E221C4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9E216E62D6637CC00E221C4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E949DF6E2D5F908F00C4A313 /* GoogleMobileAds in Frameworks */,
+				E900CE7E2D6F565B0044A616 /* UnityAdapter.xcframework in Frameworks */,
+				E900CE7A2D6F56500044A616 /* UnityAds.xcframework in Frameworks */,
 				E949DF6B2D5F906F00C4A313 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,12 +101,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50CACE00DA9E8E0167C109F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E913AF142D54C4CF0061585E = {
 			isa = PBXGroup;
 			children = (
 				E913AF1F2D54C4CF0061585E /* Minesweeper */,
 				E913AF1E2D54C4CF0061585E /* Products */,
 				E949DF692D5F906F00C4A313 /* Frameworks */,
+				50CACE00DA9E8E0167C109F7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +129,7 @@
 		E913AF1F2D54C4CF0061585E /* Minesweeper */ = {
 			isa = PBXGroup;
 			children = (
+				E963363B2D658BCE0006377F /* Minesweeper.entitlements */,
 				E949DF892D61F73000C4A313 /* Config */,
 				E949DF862D61F51C00C4A313 /* App Entry Point */,
 				E949DF7A2D61F45D00C4A313 /* Views */,
@@ -92,7 +139,6 @@
 				E913AF242D54C4D30061585E /* Assets.xcassets */,
 				E949DF6F2D5F917D00C4A313 /* Info.plist */,
 				E913AF262D54C4D30061585E /* Preview Content */,
-				E949DF722D5F94CE00C4A313 /* Localizable.xcstrings */,
 				E949DF8F2D6201D800C4A313 /* InfoPlist.strings */,
 			);
 			path = Minesweeper;
@@ -109,6 +155,8 @@
 		E949DF692D5F906F00C4A313 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */,
+				E900CE792D6F56500044A616 /* UnityAds.xcframework */,
 				E949DF6A2D5F906F00C4A313 /* StoreKit.framework */,
 			);
 			name = Frameworks;
@@ -126,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E949DF782D61F44500C4A313 /* MineSweeperViewModel.swift */,
+				E963363C2D65A7A30006377F /* LeaderboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -136,6 +185,7 @@
 				E949DF7B2D61F46B00C4A313 /* MineSweeperView.swift */,
 				E949DF7D2D61F47500C4A313 /* CellView.swift */,
 				E949DF7F2D61F47C00C4A313 /* GachaView.swift */,
+				E96336392D65725D0006377F /* RankingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +196,8 @@
 				E949DF842D61F4A600C4A313 /* HapticManager.swift */,
 				E949DF702D5F92BF00C4A313 /* BannerAdView.swift */,
 				E949DF872D61F5F500C4A313 /* DeviceUtils.swift */,
+				E92671092D65EEB400A9E97B /* GameManager.swift */,
+				E9E216E02D6637C900E221C4 /* Localizable.strings */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -154,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				E913AF202D54C4CF0061585E /* MinesweeperApp.swift */,
+				E9E216DA2D6630D300E221C4 /* SplashView.swift */,
 			);
 			path = "App Entry Point";
 			sourceTree = "<group>";
@@ -176,6 +229,7 @@
 				E913AF192D54C4CF0061585E /* Sources */,
 				E913AF1A2D54C4CF0061585E /* Frameworks */,
 				E913AF1B2D54C4CF0061585E /* Resources */,
+				E900CE7C2D6F56500044A616 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,10 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E216DE2D6637C900E221C4 /* Localizable.strings in Resources */,
 				E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */,
 				E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */,
 				E913AF252D54C4D30061585E /* Assets.xcassets in Resources */,
-				E949DF732D5F94CE00C4A313 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,12 +305,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E949DF712D5F92BF00C4A313 /* BannerAdView.swift in Sources */,
+				E926710A2D65EEB400A9E97B /* GameManager.swift in Sources */,
 				E949DF882D61F5F500C4A313 /* DeviceUtils.swift in Sources */,
 				E949DF802D61F47C00C4A313 /* GachaView.swift in Sources */,
 				E949DF852D61F4A600C4A313 /* HapticManager.swift in Sources */,
 				E949DF7C2D61F46B00C4A313 /* MineSweeperView.swift in Sources */,
 				E949DF7E2D61F47500C4A313 /* CellView.swift in Sources */,
+				E963363D2D65A7A30006377F /* LeaderboardViewModel.swift in Sources */,
+				E9E216DB2D6630D300E221C4 /* SplashView.swift in Sources */,
 				E949DF792D61F44500C4A313 /* MineSweeperViewModel.swift in Sources */,
+				E963363A2D65725D0006377F /* RankingView.swift in Sources */,
 				E913AF212D54C4CF0061585E /* MinesweeperApp.swift in Sources */,
 				E949DF752D61F40700C4A313 /* CellModel.swift in Sources */,
 			);
@@ -277,6 +335,20 @@
 				E949DF952D6201E000C4A313 /* vi */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E9E216E02D6637C900E221C4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9E216DF2D6637C900E221C4 /* en */,
+				E9E216E12D6637CA00E221C4 /* zh-Hans */,
+				E9E216E22D6637CA00E221C4 /* zh-Hant */,
+				E9E216E32D6637CB00E221C4 /* ja */,
+				E9E216E42D6637CB00E221C4 /* ru */,
+				E9E216E52D6637CB00E221C4 /* ko */,
+				E9E216E62D6637CC00E221C4 /* vi */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -409,29 +481,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025021703;
+				CURRENT_PROJECT_VERSION = 2025022601;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devwithai.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -441,29 +517,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025021703;
+				CURRENT_PROJECT_VERSION = 2025022601;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devwithai.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

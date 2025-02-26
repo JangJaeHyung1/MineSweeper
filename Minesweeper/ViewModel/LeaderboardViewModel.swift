@@ -60,6 +60,10 @@ class LeaderboardViewModel: ObservableObject {
     
     // ✅ Game Center 리더보드 열기
     func openGameCenter() {
+        if !isGameCenterConnected {
+            authenticateGameCenter()
+            return
+        }
         print("openGameCenter isGameCenterConnected:\(isGameCenterConnected)")
         let localPlayer = GKLocalPlayer.local
         if !localPlayer.isAuthenticated {
