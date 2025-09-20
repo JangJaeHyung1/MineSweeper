@@ -17,9 +17,14 @@ struct GachaView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("\(NSLocalizedString("getItem", comment: ""))" + "\(newItem ?? "❓")")
-                .font(.title2)
+            (
+                Text("\(NSLocalizedString("getItem", comment: ""))")
+                    .font(.title2)
+                + Text("  \(newItem ?? "❓")")
+                    .font(.largeTitle)
+            )
                 .padding()
+            .padding()
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 10) {
                     ForEach(gachaItems, id: \.self) { item in
@@ -50,6 +55,7 @@ struct GachaView: View {
                         newItem = "❌"
                     }
                 }
+                Sound.pop()
             }) {
                 Text("\(NSLocalizedString("gatchaStart", comment: ""))")
                     .font(.headline)

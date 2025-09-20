@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import StoreKit
 
 enum Difficulty: CaseIterable, Comparable {
     case easy
@@ -54,6 +54,7 @@ struct MineSweeperView: View {
     @State private var timer: Timer? = nil
     @State private var showDifficultySheet: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.requestReview) private var requestReview
     @State private var showGachaSheet = false
     @State private var showRankingSheet = false
     
@@ -83,9 +84,9 @@ struct MineSweeperView: View {
 
         VStack(spacing: 0) {
             Spacer().frame(height: 0) // 상단 여백 강제 제거
-//                BannerAdView(adUnitID: adUnitID)
-//                    .frame(height: 50)
-//                    .background(Color(UIColor.systemGray6))
+                BannerAdView(adUnitID: adUnitID)
+                    .frame(height: 50)
+                    .background(Color(UIColor.systemGray6))
             HStack {
                 Button(action: {
                     showRankingSheet = true
@@ -185,8 +186,8 @@ struct MineSweeperView: View {
                 columns: Array(repeating: GridItem(.flexible(), spacing: spacing), count: viewModel.gridWidthSize),
                 spacing: spacing
             ) {
-                ForEach(0..<viewModel.gridHeightSize, id: \ .self) { row in
-                    ForEach(0..<viewModel.gridWidthSize, id: \ .self) { col in
+                ForEach(0..<viewModel.gridHeightSize, id: \.self) { row in
+                    ForEach(0..<viewModel.gridWidthSize, id: \.self) { col in
                         CellView(cell: viewModel.grid[row][col], cellSize: cellSize, flag: viewModel.selectedFlag)
                             .id("\(row)-\(col)")
                             .gesture(
@@ -198,6 +199,7 @@ struct MineSweeperView: View {
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                                     if let start = touchStartTime, Date().timeIntervalSince(start) >= 0.3 {
                                                         // 🏳️ 깃발 꽂기
+                                                        Sound.flag()
                                                         Haptic.impact(style: .medium)
                                                         viewModel.toggleFlag(row: row, col: col)
                                                         if viewModel.checkForWin() {
@@ -238,6 +240,7 @@ struct MineSweeperView: View {
             isDarkMode = colorScheme == .dark
             startTimer()
             GameDataManager.shared.loadGameData()
+            ReviewGate.recordSession()
         }
         .sheet(isPresented: $showGachaSheet) {
             GachaView(viewModel: viewModel, newItem: $newItem)
@@ -259,6 +262,7 @@ struct MineSweeperView: View {
                     message: Text(String(format: NSLocalizedString("clearTime", comment: ""), elapsedTime)),
                     dismissButton: .default(Text("\(NSLocalizedString("ok", comment: ""))")) {
                         resetGame()
+                        maybeAskForReview(after: .win)
                     }
                 )
             } else if viewModel.isHiddenBonusAlert {
@@ -357,6 +361,15 @@ struct MineSweeperView: View {
             } else {
                 timer?.invalidate()
             }
+        }
+    }
+    
+    private func maybeAskForReview(after event: ReviewEvent) {
+        if case .win = event { ReviewGate.recordWin() }
+        guard ReviewGate.canPrompt() else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            requestReview()
+            ReviewGate.markPrompted()
         }
     }
 }

@@ -28,6 +28,10 @@ struct BannerAdView: UIViewRepresentable {
 
     func updateUIView(_ uiView: GADBannerView, context: Context) {}
     class Coordinator: NSObject, GADBannerViewDelegate {
+        func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+            print("✅ AdMob 배너 광고 로드 성공")
+        }
+        
         func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
             print("📢 AdMob 광고 실패: \(error.localizedDescription)")
             print("✅ Unity Ads로 대체되는지 확인하세요 (미디에이션 설정 필요)")

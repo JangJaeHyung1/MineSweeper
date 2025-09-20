@@ -59,9 +59,12 @@ struct MainView: View {
                 ZStack {
                     
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.blue, Color.purple]),
-                        startPoint: .top,
-                        endPoint: .bottom
+                        colors: [
+                            Color(red: 0.98, green: 0.99, blue: 1.00), // soft ice blue
+                            Color(red: 0.97, green: 1.00, blue: 0.98)  // whisper mint
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
                     .ignoresSafeArea()
                     
@@ -69,17 +72,22 @@ struct MainView: View {
                         Image("Minesweeper_logo")
                             .resizable()
                             .frame(width: 100, height: 100)
-                            .foregroundColor(.white)
                             .padding(.bottom)
+                            .shadow(color: .black.opacity(0.25), radius: 6, y: 3)
                         
                         Text("\(NSLocalizedString("minesweeper", comment: ""))")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
+                            .shadow(color: .black.opacity(0.08), radius: 2, y: 1)
                             .padding()
                         
-                        Button("\(NSLocalizedString("start_game", comment: ""))") {
+                        Button {
                             showGameView = true
+                        } label: {
+                            Text("\(NSLocalizedString("start_game", comment: ""))")
+                                .font(.headline)
+                                .padding(.horizontal, 14)       // 내부 세로 패딩
                         }
                         .padding()
                         .background(.black)
@@ -97,4 +105,3 @@ struct MainView: View {
         }
     }
 }
-

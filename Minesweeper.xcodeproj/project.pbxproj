@@ -15,6 +15,9 @@
 		E913AF252D54C4D30061585E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF242D54C4D30061585E /* Assets.xcassets */; };
 		E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF272D54C4D30061585E /* Preview Assets.xcassets */; };
 		E926710A2D65EEB400A9E97B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92671092D65EEB400A9E97B /* GameManager.swift */; };
+		E93288EC2E7F1A27005B1F33 /* flag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E93288EB2E7F1A26005B1F33 /* flag.mp3 */; };
+		E93288F32E7F266A005B1F33 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E93288F22E7F266A005B1F33 /* pop.mp3 */; };
+		E93288F52E7F2F39005B1F33 /* AppstoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */; };
 		E949DF6B2D5F906F00C4A313 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E949DF6A2D5F906F00C4A313 /* StoreKit.framework */; };
 		E949DF6E2D5F908F00C4A313 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E949DF6D2D5F908F00C4A313 /* GoogleMobileAds */; };
 		E949DF712D5F92BF00C4A313 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF702D5F92BF00C4A313 /* BannerAdView.swift */; };
@@ -55,6 +58,9 @@
 		E913AF242D54C4D30061585E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E913AF272D54C4D30061585E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E92671092D65EEB400A9E97B /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		E93288EB2E7F1A26005B1F33 /* flag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flag.mp3; sourceTree = "<group>"; };
+		E93288F22E7F266A005B1F33 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppstoreReview.swift; sourceTree = "<group>"; };
 		E949DF6A2D5F906F00C4A313 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E949DF6F2D5F917D00C4A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E949DF702D5F92BF00C4A313 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
@@ -152,6 +158,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E93288ED2E7F1FC0005B1F33 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				E93288EB2E7F1A26005B1F33 /* flag.mp3 */,
+				E93288F22E7F266A005B1F33 /* pop.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		E949DF692D5F906F00C4A313 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +208,8 @@
 		E949DF832D61F49300C4A313 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */,
+				E93288ED2E7F1FC0005B1F33 /* Sound */,
 				E949DF842D61F4A600C4A313 /* HapticManager.swift */,
 				E949DF702D5F92BF00C4A313 /* BannerAdView.swift */,
 				E949DF872D61F5F500C4A313 /* DeviceUtils.swift */,
@@ -290,7 +307,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93288F32E7F266A005B1F33 /* pop.mp3 in Resources */,
 				E9E216DE2D6637C900E221C4 /* Localizable.strings in Resources */,
+				E93288EC2E7F1A27005B1F33 /* flag.mp3 in Resources */,
 				E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */,
 				E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */,
 				E913AF252D54C4D30061585E /* Assets.xcassets in Resources */,
@@ -307,6 +326,7 @@
 				E949DF712D5F92BF00C4A313 /* BannerAdView.swift in Sources */,
 				E926710A2D65EEB400A9E97B /* GameManager.swift in Sources */,
 				E949DF882D61F5F500C4A313 /* DeviceUtils.swift in Sources */,
+				E93288F52E7F2F39005B1F33 /* AppstoreReview.swift in Sources */,
 				E949DF802D61F47C00C4A313 /* GachaView.swift in Sources */,
 				E949DF852D61F4A600C4A313 /* HapticManager.swift in Sources */,
 				E949DF7C2D61F46B00C4A313 /* MineSweeperView.swift in Sources */,
@@ -483,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025022601;
+				CURRENT_PROJECT_VERSION = 2025092101;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
@@ -495,12 +515,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devwithai.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -519,7 +539,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025022601;
+				CURRENT_PROJECT_VERSION = 2025092101;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
@@ -531,12 +551,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devwithai.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
