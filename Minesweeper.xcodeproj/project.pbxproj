@@ -18,6 +18,7 @@
 		E93288EC2E7F1A27005B1F33 /* flag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E93288EB2E7F1A26005B1F33 /* flag.mp3 */; };
 		E93288F32E7F266A005B1F33 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E93288F22E7F266A005B1F33 /* pop.mp3 */; };
 		E93288F52E7F2F39005B1F33 /* AppstoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */; };
+		E93288F72E7F3816005B1F33 /* TapSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93288F62E7F380E005B1F33 /* TapSound.swift */; };
 		E949DF6B2D5F906F00C4A313 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E949DF6A2D5F906F00C4A313 /* StoreKit.framework */; };
 		E949DF6E2D5F908F00C4A313 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E949DF6D2D5F908F00C4A313 /* GoogleMobileAds */; };
 		E949DF712D5F92BF00C4A313 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949DF702D5F92BF00C4A313 /* BannerAdView.swift */; };
@@ -61,6 +62,7 @@
 		E93288EB2E7F1A26005B1F33 /* flag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flag.mp3; sourceTree = "<group>"; };
 		E93288F22E7F266A005B1F33 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppstoreReview.swift; sourceTree = "<group>"; };
+		E93288F62E7F380E005B1F33 /* TapSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSound.swift; sourceTree = "<group>"; };
 		E949DF6A2D5F906F00C4A313 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E949DF6F2D5F917D00C4A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E949DF702D5F92BF00C4A313 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		E949DF832D61F49300C4A313 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E93288F62E7F380E005B1F33 /* TapSound.swift */,
 				E93288F42E7F2F2F005B1F33 /* AppstoreReview.swift */,
 				E93288ED2E7F1FC0005B1F33 /* Sound */,
 				E949DF842D61F4A600C4A313 /* HapticManager.swift */,
@@ -333,6 +336,7 @@
 				E949DF7E2D61F47500C4A313 /* CellView.swift in Sources */,
 				E963363D2D65A7A30006377F /* LeaderboardViewModel.swift in Sources */,
 				E9E216DB2D6630D300E221C4 /* SplashView.swift in Sources */,
+				E93288F72E7F3816005B1F33 /* TapSound.swift in Sources */,
 				E949DF792D61F44500C4A313 /* MineSweeperViewModel.swift in Sources */,
 				E963363A2D65725D0006377F /* RankingView.swift in Sources */,
 				E913AF212D54C4CF0061585E /* MinesweeperApp.swift in Sources */,

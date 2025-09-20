@@ -29,7 +29,9 @@ struct BannerAdView: UIViewRepresentable {
     func updateUIView(_ uiView: GADBannerView, context: Context) {}
     class Coordinator: NSObject, GADBannerViewDelegate {
         func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+#if DEBUG
             print("✅ AdMob 배너 광고 로드 성공")
+#endif
         }
         
         func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {

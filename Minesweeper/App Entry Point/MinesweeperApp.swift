@@ -88,6 +88,7 @@ struct MainView: View {
                             Text("\(NSLocalizedString("start_game", comment: ""))")
                                 .font(.headline)
                                 .padding(.horizontal, 14)       // 내부 세로 패딩
+                                .foregroundColor(.white)   
                         }
                         .padding()
                         .background(.black)
@@ -102,6 +103,9 @@ struct MainView: View {
                     }
                     
             }
+        }
+        .onAppear {
+            AppBootstrap.configureAudioSession()
         }
     }
 }
