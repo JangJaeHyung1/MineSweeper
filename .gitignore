@@ -8,3 +8,4 @@ timeline.xctimeline
 
 # 추가된 설정
 *.xcconfig
+.DS_Store
