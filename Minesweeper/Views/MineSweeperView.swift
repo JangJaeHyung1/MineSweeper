@@ -34,8 +34,8 @@ enum Difficulty: CaseIterable, Comparable {
             return (height: 11, mines: 12)
         case .hard:
             if DeviceUtils.hasNotch {
-//                return (height: 14, mines: 23)
-                return (height: 15, mines: 23)
+                return (height: 14, mines: 23)
+//                return (height: 15, mines: 23) // 광고 없을때만
             } else {
                 return (height: 12, mines: 19)
             }
@@ -46,7 +46,6 @@ enum Difficulty: CaseIterable, Comparable {
 // MARK: - Game View
 struct MineSweeperView: View {
     @StateObject private var viewModel = MineSweeperViewModel()
-    @State private var selectedDifficulty: Difficulty = .normal
     @State private var showWinAlert: Bool = false
     @State private var elapsedTime: Int = 0
     @State private var timerRunning: Bool = false
@@ -105,17 +104,14 @@ struct MineSweeperView: View {
                 .actionSheet(isPresented: $showDifficultySheet) {
                     ActionSheet(title: Text("\(NSLocalizedString("select_difficulty", comment: ""))"), buttons: [
                         .default(Text("\(NSLocalizedString("easy", comment: ""))")) {
-                            selectedDifficulty = .easy
                             viewModel.setDifficulty(.easy)
                             resetGame()
                         },
                         .default(Text("\(NSLocalizedString("normal", comment: ""))")) {
-                            selectedDifficulty = .normal
                             viewModel.setDifficulty(.normal)
                             resetGame()
                         },
                         .default(Text("\(NSLocalizedString("hard", comment: ""))")) {
-                            selectedDifficulty = .hard
                             viewModel.setDifficulty(.hard)
                             resetGame()
                         },
@@ -158,17 +154,14 @@ struct MineSweeperView: View {
                 .actionSheet(isPresented: $showDifficultySheet) {
                     ActionSheet(title: Text("\(NSLocalizedString("select_difficulty", comment: ""))"), buttons: [
                         .default(Text("\(NSLocalizedString("easy", comment: ""))")) {
-                            selectedDifficulty = .easy
                             viewModel.setDifficulty(.easy)
                             resetGame()
                         },
                         .default(Text("\(NSLocalizedString("normal", comment: ""))")) {
-                            selectedDifficulty = .normal
                             viewModel.setDifficulty(.normal)
                             resetGame()
                         },
                         .default(Text("\(NSLocalizedString("hard", comment: ""))")) {
-                            selectedDifficulty = .hard
                             viewModel.setDifficulty(.hard)
                             resetGame()
                         },

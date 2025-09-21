@@ -78,7 +78,7 @@ struct MainView: View {
                         Text("\(NSLocalizedString("minesweeper", comment: ""))")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.black)
                             .shadow(color: .black.opacity(0.08), radius: 2, y: 1)
                             .padding()
                         

@@ -28,8 +28,7 @@ class MineSweeperViewModel: ObservableObject {
         loadPoints()
         loadFlags()
         resetGame()
-        Sound.preloadFlag()
-        Sound.preloadPop()
+        Sound.preloadSound()
     }
 
     func addPoints(_ amount: Int) {
@@ -131,19 +130,6 @@ class MineSweeperViewModel: ObservableObject {
         flagsPlaced = 0
         calculateAdjacentMines()
         
-    }
-
-    private func placeMines() {
-        var minesPlaced = 0
-        while minesPlaced < mineCount {
-            let row = Int.random(in: 0..<gridHeightSize)
-            let col = Int.random(in: 0..<gridWidthSize)
-
-            if !grid[row][col].isMine {
-                grid[row][col].isMine = true
-                minesPlaced += 1
-            }
-        }
     }
 
     private func calculateAdjacentMines() {

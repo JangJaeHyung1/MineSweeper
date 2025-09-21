@@ -11,7 +11,21 @@ import AVFoundation
 struct Sound {
     private static var flagPlayer: AVAudioPlayer?
     private static var popPlayer: AVAudioPlayer?
-    private static var sfxVolumeLinear: Float = 0.6
+    private static var tapPlayer: AVAudioPlayer?
+    private static var sfxVolumeLinear: Float = 0.8
+    
+    static func preloadSound() {
+        preloadTap()
+        preloadFlag()
+        preloadPop()
+    }
+    static func preloadTap() {
+        guard tapPlayer == nil else { return }
+        if let url = Bundle.main.url(forResource: "tap", withExtension: "mp3") {
+            tapPlayer = try? AVAudioPlayer(contentsOf: url)
+            tapPlayer?.prepareToPlay()
+        }
+    }
     
     static func preloadFlag() {
         guard flagPlayer == nil else { return }
@@ -70,7 +84,12 @@ struct Sound {
     }
 
     static func tap() {
-        AudioServicesPlaySystemSound(1104)
+        if let p = tapPlayer {
+            p.currentTime = 0
+            p.play()
+        } else {
+            AudioServicesPlaySystemSound(1104) // 폴백
+        }
     }
 }
 

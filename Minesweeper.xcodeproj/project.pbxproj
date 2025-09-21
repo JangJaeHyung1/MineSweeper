@@ -11,6 +11,7 @@
 		E900CE7B2D6F56500044A616 /* UnityAds.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE792D6F56500044A616 /* UnityAds.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E900CE7E2D6F565B0044A616 /* UnityAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */; };
 		E900CE7F2D6F565B0044A616 /* UnityAdapter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E908FFC42E7FDABC005CB9E2 /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E908FFC32E7FDABC005CB9E2 /* tap.mp3 */; };
 		E913AF212D54C4CF0061585E /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913AF202D54C4CF0061585E /* MinesweeperApp.swift */; };
 		E913AF252D54C4D30061585E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF242D54C4D30061585E /* Assets.xcassets */; };
 		E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913AF272D54C4D30061585E /* Preview Assets.xcassets */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		E900CE792D6F56500044A616 /* UnityAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAds.xcframework; sourceTree = "<group>"; };
 		E900CE7D2D6F565B0044A616 /* UnityAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAdapter.xcframework; sourceTree = "<group>"; };
+		E908FFC32E7FDABC005CB9E2 /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap.mp3; sourceTree = "<group>"; };
 		E913AF1D2D54C4CF0061585E /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E913AF202D54C4CF0061585E /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		E913AF242D54C4D30061585E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		E93288ED2E7F1FC0005B1F33 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				E908FFC32E7FDABC005CB9E2 /* tap.mp3 */,
 				E93288EB2E7F1A26005B1F33 /* flag.mp3 */,
 				E93288F22E7F266A005B1F33 /* pop.mp3 */,
 			);
@@ -312,6 +315,7 @@
 			files = (
 				E93288F32E7F266A005B1F33 /* pop.mp3 in Resources */,
 				E9E216DE2D6637C900E221C4 /* Localizable.strings in Resources */,
+				E908FFC42E7FDABC005CB9E2 /* tap.mp3 in Resources */,
 				E93288EC2E7F1A27005B1F33 /* flag.mp3 in Resources */,
 				E913AF282D54C4D30061585E /* Preview Assets.xcassets in Resources */,
 				E949DF8D2D6201D800C4A313 /* InfoPlist.strings in Resources */,
@@ -507,7 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025092101;
+				CURRENT_PROJECT_VERSION = 2025092202;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
@@ -543,7 +547,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2025092101;
+				CURRENT_PROJECT_VERSION = 2025092202;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y6GZNH939;
 				ENABLE_PREVIEWS = YES;
